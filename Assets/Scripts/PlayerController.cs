@@ -28,4 +28,13 @@ public class PlayerController : MonoBehaviour {
         rb.AddForce(movement * speed);
 
 	}
+
+    //玉が他のオブジェクトにぶつかった時に呼び出される
+    private void OnTriggerEnter(Collider other)
+    {
+        //ぶつかったオブジェクトが収集アイテムだった場合
+        if (other.gameObject.CompareTag("PickUp"))
+            //アイテムを非表示にする
+            other.gameObject.SetActive(false);
+    }
 }
